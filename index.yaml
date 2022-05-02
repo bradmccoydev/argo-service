@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   argo-service:
   - apiVersion: v2
+    appVersion: 0.14.2
+    created: "2022-05-02T04:28:10.587989937Z"
+    description: A Helm chart for Kubernetes
+    digest: 09dc1570155269c13581a81ee3596bb93d98f8bc7653d75fd206557f850272cc
+    name: argo-service
+    type: application
+    urls:
+    - https://github.com/bradmccoydev/argo-service/releases/download/argo-service-0.14.2/argo-service-0.14.2.tgz
+    version: 0.14.2
+  - apiVersion: v2
     appVersion: 0.14.1
     created: "2022-04-17T10:23:16.047554738Z"
     description: A Helm chart for Kubernetes
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/bradmccoydev/argo-service/releases/download/argo-service-0.13.1/argo-service-0.13.1.tgz
     version: 0.13.1
-generated: "2022-04-17T10:23:16.048154548Z"
+generated: "2022-05-02T04:28:10.588000238Z"
