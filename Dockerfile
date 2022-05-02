@@ -38,7 +38,7 @@ FROM alpine:3.15
 # See https://github.com/gliderlabs/docker-alpine/issues/136#issuecomment-272703023
 
 RUN    apk update && apk upgrade \
-	&& apk add ca-certificates libc6-compat \
+	&& apk add ca-certificates libc6-compat curl \
 	&& update-ca-certificates \
 	&& rm -rf /var/cache/apk/*
 
@@ -49,14 +49,15 @@ ENV env=production
 ARG debugBuild
 
 # Set the Kubernetes version as found in the UCP Dashboard or API
-ARG KUBEECTL_VERSION=v1.16.2
+ARG KUBECTL_VERSION=v1.23.0
 
 # Get the kubectl binary.
-RUN wget https://storage.googleapis.com/kubernetes-release/release/$KUBEECTL_VERSION/bin/linux/amd64/kubectl && \
+RUN wget https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl && \
     chmod +x ./kubectl && \
     mv ./kubectl /bin/kubectl
 
-RUN wget https://github.com/argoproj/argo-rollouts/releases/download/v0.10.2/kubectl-argo-rollouts-linux-amd64 && \
+RUN curl -LO https://github.com/argoproj/argo-rollouts/releases/download/v1.2.0/kubectl-argo-rollouts-linux-amd64 && \
+    ls && \
     chmod +x ./kubectl-argo-rollouts-linux-amd64 && \
     mv ./kubectl-argo-rollouts-linux-amd64 /bin/kubectl-argo-rollouts
 
